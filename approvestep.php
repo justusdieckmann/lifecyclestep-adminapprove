@@ -32,7 +32,7 @@ require_capability('moodle/site:config', context_system::instance());
 admin_externalpage_setup('lifecyclestep_adminapprove_manage');
 
 $action = optional_param('act', null, PARAM_ALPHA);
-$ids = optional_param_array('c', array(), PARAM_INT);
+$ids = optional_param_array('c', [], PARAM_INT);
 $stepid = required_param('stepid', PARAM_INT);
 
 $step = \tool_lifecycle\local\manager\step_manager::get_step_instance($stepid);
@@ -139,13 +139,13 @@ echo "<br>";
 $hasrecords = $DB->record_exists_sql('SELECT a.id FROM {lifecyclestep_adminapprove} a ' .
         'JOIN {tool_lifecycle_process} p ON p.id = a.processid ' .
         'JOIN {tool_lifecycle_step} s ON s.workflowid = p.workflowid AND s.sortindex = p.stepindex ' .
-        'WHERE s.id = :sid AND a.status = 0', array('sid' => $stepid));
+        'WHERE s.id = :sid AND a.status = 0', ['sid' => $stepid]);
 
 if ($hasrecords) {
     $mform->display();
 
     echo get_string('courses_waiting', 'lifecyclestep_adminapprove',
-            array('step' => $step->instancename, 'workflow' => $workflow->title));
+            ['step' => $step->instancename, 'workflow' => $workflow->title]);
     echo "<br><br>";
     echo '<form action="" method="post"><input type="hidden" name="sesskey" value="' . sesskey() . '">';
 
@@ -155,27 +155,27 @@ if ($hasrecords) {
         echo get_string('bulkactions') . ':<br>';
         echo html_writer::start_div('singlebutton');
         echo html_writer::tag('button', get_string('proceedselected', 'lifecyclestep_adminapprove'),
-                array('type' => 'submit', 'name' => 'act', 'value' => PROCEED, 'class' => 'btn btn-secondary'));
+                ['type' => 'submit', 'name' => 'act', 'value' => PROCEED, 'class' => 'btn btn-secondary']);
         echo html_writer::end_div() . html_writer::start_div('singlebutton');
         echo html_writer::tag('button', get_string('rollbackselected', 'lifecyclestep_adminapprove'),
-                array('type' => 'submit', 'name' => 'act', 'value' => ROLLBACK, 'class' => 'btn btn-secondary'));
+                ['type' => 'submit', 'name' => 'act', 'value' => ROLLBACK, 'class' => 'btn btn-secondary']);
         echo html_writer::end_div();
     }
     echo '</form>';
 
     echo '<div class="mt-2">';
-    $button = new \single_button(new moodle_url($PAGE->url, array('act' => PROCEED_ALL)),
+    $button = new \single_button(new moodle_url($PAGE->url, ['act' => PROCEED_ALL]),
             get_string(PROCEED_ALL, 'lifecyclestep_adminapprove'));
     echo $OUTPUT->render($button);
 
-    $button = new \single_button(new moodle_url($PAGE->url, array('act' => ROLLBACK_ALL)),
+    $button = new \single_button(new moodle_url($PAGE->url, ['act' => ROLLBACK_ALL]),
             get_string(ROLLBACK_ALL, 'lifecyclestep_adminapprove'));
     echo $OUTPUT->render($button);
     echo '</div>';
-    $PAGE->requires->js_call_amd('lifecyclestep_adminapprove/init', 'init', array(sesskey(), $PAGE->url->out()));
+    $PAGE->requires->js_call_amd('lifecyclestep_adminapprove/init', 'init', [sesskey(), $PAGE->url->out()]);
 } else {
     echo get_string('no_courses_waiting', 'lifecyclestep_adminapprove',
-            array('step' => $step->instancename, 'workflow' => $workflow->title));
+            ['step' => $step->instancename, 'workflow' => $workflow->title]);
 }
 
 echo $OUTPUT->footer();

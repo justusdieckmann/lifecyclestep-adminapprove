@@ -43,8 +43,8 @@ class step_table extends \table_sql {
         $this->define_baseurl("/admin/tool/lifecycle/step/adminapprove/index.php");
         $this->define_columns(['stepname', 'workflowname', 'courses']);
         $this->define_headers(
-            array(get_string('step', 'tool_lifecycle'), get_string('workflow', 'lifecyclestep_adminapprove'),
-                get_string('amount_courses', 'lifecyclestep_adminapprove')));
+            [get_string('step', 'tool_lifecycle'), get_string('workflow', 'lifecyclestep_adminapprove'),
+                get_string('amount_courses', 'lifecyclestep_adminapprove')]);
         $this->set_attribute('id', 'adminapprove-steptable');
         $this->sortable(false);
         $fields = 's.id as id, s.instancename as stepname, w.title as workflowname, b.courses as courses';

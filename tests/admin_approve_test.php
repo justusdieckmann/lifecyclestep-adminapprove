@@ -35,7 +35,7 @@ use tool_lifecycle\task\lifecycle_task;
  * @copyright  2019 Justus Dieckmann
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class admin_approve_test extends \advanced_testcase {
+final class admin_approve_test extends \advanced_testcase {
 
     /**
      * Starts a manual trigger and checks that one mail is send.
@@ -46,7 +46,7 @@ class admin_approve_test extends \advanced_testcase {
      * @throws dml_transaction_exception
      * @throws moodle_exception
      */
-    public function test_admin_mail() {
+    public function test_admin_mail(): void {
         $this->resetAfterTest(true);
         $generator = $this->getDataGenerator()->get_plugin_generator('tool_lifecycle');
         $workflow = $generator->create_workflow([], []);

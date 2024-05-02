@@ -40,7 +40,7 @@ class decision_table extends \table_sql {
     private $category;
 
     /**
-     * @var String pattern for the coursename.
+     * @var string pattern for the coursename.
      */
     private $coursename;
 
@@ -60,13 +60,13 @@ class decision_table extends \table_sql {
         $this->define_baseurl("/admin/tool/lifecycle/step/adminapprove/approvestep.php?stepid=$stepid");
         $this->define_columns(['checkbox', 'courseid', 'course', 'category', 'startdate', 'tools']);
         $this->define_headers(
-                array(\html_writer::checkbox('checkall', null, false),
+                [\html_writer::checkbox('checkall', null, false),
                         get_string('courseid', 'lifecyclestep_adminapprove'),
                         get_string('course'),
                         get_string('category'),
                         get_string('startdate'),
-                        get_string('tools', 'lifecyclestep_adminapprove')));
-        $this->column_nosort = array('checkbox', 'tools');
+                        get_string('tools', 'lifecyclestep_adminapprove')]);
+        $this->column_nosort = ['checkbox', 'tools'];
         $fields = 'm.id, w.displaytitle as workflow, c.id as courseid, c.fullname as course, cc.name as category,
             c.startdate, m.status';
         $from = '{lifecyclestep_adminapprove} m ' .
@@ -76,7 +76,7 @@ class decision_table extends \table_sql {
                 'LEFT JOIN {tool_lifecycle_workflow} w ON w.id = p.workflowid ' .
                 'LEFT JOIN {tool_lifecycle_step} s ON s.workflowid = p.workflowid AND s.sortindex = p.stepindex';
         $where = 'm.status = 0 AND s.id = :sid ';
-        $params = array('sid' => $stepid);
+        $params = ['sid' => $stepid];
         if ($courseid) {
             $where .= 'AND c.id = :cid ';
             $params['cid'] = $courseid;
@@ -154,13 +154,13 @@ class decision_table extends \table_sql {
     public function col_tools($row) {
         $output = \html_writer::start_div('singlebutton mr-1');
         $output .= \html_writer::tag('button', get_string('proceed', 'lifecyclestep_adminapprove'),
-                array('class' => 'btn btn-secondary adminapprove-action', 'data-action' => 'proceed', 'data-content' => $row->id,
-                        'type' => 'button'));
+                ['class' => 'btn btn-secondary adminapprove-action', 'data-action' => 'proceed', 'data-content' => $row->id,
+                        'type' => 'button']);
         $output .= \html_writer::end_div();
         $output .= \html_writer::start_div('singlebutton mr-1 ml-0 mt-1');
         $output .= \html_writer::tag('button', get_string('rollback', 'lifecyclestep_adminapprove'),
-                array('class' => 'btn btn-secondary adminapprove-action', 'data-action' => 'rollback', 'data-content' => $row->id,
-                        'type' => 'button'));
+                ['class' => 'btn btn-secondary adminapprove-action', 'data-action' => 'rollback', 'data-content' => $row->id,
+                        'type' => 'button']);
         $output .= \html_writer::end_div();
         return $output;
     }

@@ -70,7 +70,7 @@ class adminapprove extends libbase {
      */
     public function rollback_course($processid, $instanceid, $course) {
         global $DB;
-        $DB->delete_records('lifecyclestep_adminapprove', array('processid' => $processid));
+        $DB->delete_records('lifecyclestep_adminapprove', ['processid' => $processid]);
     }
 
     /**
@@ -91,13 +91,13 @@ class adminapprove extends libbase {
      */
     public function process_waiting_course($processid, $instanceid, $course) {
         global $DB;
-        $record = $DB->get_record('lifecyclestep_adminapprove', array('processid' => $processid));
+        $record = $DB->get_record('lifecyclestep_adminapprove', ['processid' => $processid]);
         switch ($record->status) {
             case 1:
-                $DB->delete_records('lifecyclestep_adminapprove', array('processid' => $processid));
+                $DB->delete_records('lifecyclestep_adminapprove', ['processid' => $processid]);
                 return step_response::proceed();
             case 2:
-                $DB->delete_records('lifecyclestep_adminapprove', array('processid' => $processid));
+                $DB->delete_records('lifecyclestep_adminapprove', ['processid' => $processid]);
                 return step_response::rollback();
             default:
                 return step_response::waiting();
@@ -136,9 +136,9 @@ class adminapprove extends libbase {
      * @return instance_setting[]
      */
     public function instance_settings() {
-        return array(
+        return [
             new instance_setting('statusmessage', PARAM_TEXT),
-        );
+        ];
     }
 
     /**
@@ -161,6 +161,6 @@ class adminapprove extends libbase {
      */
     public function abort_course($process) {
         global $DB;
-        $DB->delete_records('lifecyclestep_adminapprove', array('processid' => $process->id));
+        $DB->delete_records('lifecyclestep_adminapprove', ['processid' => $process->id]);
     }
 }

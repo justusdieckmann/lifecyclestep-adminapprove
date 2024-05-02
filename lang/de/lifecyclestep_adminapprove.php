@@ -23,27 +23,27 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Adminbestätigungs-Schritt';
-$string['privacy:metadata'] = 'Dieses Subplugin speichert keine persönlichen Daten.';
-$string['emailsubject'] = 'Kurs-Lebenszyklus: Es gibt neue Kurse, die auf Bestätigung warten.';
+$string['amount_courses'] = 'Anzahl wartender Kurse';
+$string['bulkactions'] = 'Massenaktionen';
+$string['courseid'] = 'Kurs-ID';
+$string['courses_waiting'] = 'Diese Kurse warten derzeit auf Bestätigung im "{$a->step}"-Schritt in dem "{$a->workflow}"-Workflow.';
 $string['emailcontent'] = 'Es gibt {$a->amount} neue Kurse, die auf Bestätigung warten. Bitte besuchen Sie {$a->url}.';
 $string['emailcontenthtml'] = 'Es gibt {$a->amount} neue Kurse, die auf Bestätigung warten. Bitte klicken Sie auf <a href="{$a->url}">diesen Link</a>.';
-$string['courseid'] = 'Kurs-ID';
-$string['workflow'] = 'Workflow';
-$string['proceedselected'] = 'Ausgewählte fortführen';
-$string['rollbackselected'] = 'Ausgewählte zurücksetzten';
-$string['tools'] = 'Aktionen';
-$string['courses_waiting'] = 'Diese Kurse warten derzeit auf Bestätigung im "{$a->step}"-Schritt in dem "{$a->workflow}"-Workflow.';
-$string['no_courses_waiting'] = 'Es gibt derzeit keine Kurse, die im "{$a->step}"-Schritt in dem "{$a->workflow}"-Workflow auf Bestätigung warten.';
-$string['proceed'] = 'Fortführen';
-$string['rollback'] = 'Zurücksetzten';
-$string['amount_courses'] = 'Anzahl wartender Kurse';
-$string['only_number'] = 'Es sind nur Ziffern erlaubt!';
-$string['nothingtodisplay'] = 'Es gibt keine auf Bestätigung wartenden Kurse, die auf diese Filter passen.';
+$string['emailsubject'] = 'Kurs-Lebenszyklus: Es gibt neue Kurse, die auf Bestätigung warten.';
 $string['manage-adminapprove'] = 'Adminbestätigungs-Schritte verwalten';
+$string['no_courses_waiting'] = 'Es gibt derzeit keine Kurse, die im "{$a->step}"-Schritt in dem "{$a->workflow}"-Workflow auf Bestätigung warten.';
 $string['nostepstodisplay'] = 'Es gibt derzeit keine Kurse in Adminbestätigungs-Schritten, die auf Bestätigung warten.';
-$string['bulkactions'] = 'Massenaktionen';
+$string['nothingtodisplay'] = 'Es gibt keine auf Bestätigung wartenden Kurse, die auf diese Filter passen.';
+$string['only_number'] = 'Es sind nur Ziffern erlaubt!';
+$string['pluginname'] = 'Adminbestätigungs-Schritt';
+$string['privacy:metadata'] = 'Dieses Subplugin speichert keine persönlichen Daten.';
+$string['proceed'] = 'Fortführen';
 $string['proceedall'] = 'Alle fortführen';
+$string['proceedselected'] = 'Ausgewählte fortführen';
+$string['rollback'] = 'Zurücksetzten';
 $string['rollbackall'] = 'Alle zurücksetzten';
+$string['rollbackselected'] = 'Ausgewählte zurücksetzten';
 $string['statusmessage'] = 'Statusnachricht';
 $string['statusmessage_help'] = 'Statusnachricht, welche dem Lehrer angezeigt wird, wenn ein Prozess eines Kurses den Adminbestätigungs-Schritt bearbeitet.';
+$string['tools'] = 'Aktionen';
+$string['workflow'] = 'Workflow';
